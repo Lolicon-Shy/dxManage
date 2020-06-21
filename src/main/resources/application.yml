@@ -4,7 +4,7 @@ spring:
     url: jdbc:mysql://123.57.177.22:3306/dx?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: root
     password: 123456
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   profiles:
     active: dev
   thymeleaf:
