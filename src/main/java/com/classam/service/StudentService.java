@@ -1,5 +1,6 @@
 package com.classam.service;
 
+import com.classam.comment.Output;
 import com.classam.entity.Student;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface StudentService extends IService<Student> {
 
+    Output check(Student student);
 }

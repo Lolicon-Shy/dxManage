@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 宋欢
@@ -31,59 +31,51 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @RequestMapping("/list")
-    public Output list(){
+    public Output list() {
         List<Teacher> list = this.teacherService.list();
-        if (list.size()>1){
-            return new Output(Output.STATUS_SUCCESS,"查询成功",list);
+        if (list.size() > 1) {
+            return new Output(Output.STATUS_SUCCESS, "查询成功", list);
         }
-        return new Output(Output.STATUS_FAIL,"没有数据",null);
+        return new Output(Output.STATUS_FAIL, "没有数据", null);
     }
 
     @RequestMapping("/deleteById/{id}")
-    public Output deleteById(@PathVariable("id") Integer id){
+    public Output deleteById(@PathVariable("id") Integer id) {
         boolean success = this.teacherService.removeById(id);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"删除成功",true);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "删除成功", true);
         }
-        return new Output(Output.STATUS_FAIL,"删除失败",false);
+        return new Output(Output.STATUS_FAIL, "删除失败", false);
     }
 
     @RequestMapping("/updateOrAdd")
-    public Output updateOrAdd(@RequestBody Teacher teacher){
+    public Output updateOrAdd(@RequestBody Teacher teacher) {
         boolean success = this.teacherService.saveOrUpdate(teacher);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"修改或添加成功",true);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "修改或添加成功", true);
         }
 
-        return new Output(Output.STATUS_FAIL,"修改或添加失败",false);
+        return new Output(Output.STATUS_FAIL, "修改或添加失败", false);
     }
 
     @RequestMapping("/update")
-    public Output update(@RequestBody Teacher teacher){
-        UpdateWrapper<Teacher> teacherUpdateWrapper = new UpdateWrapper<>();
-        teacherUpdateWrapper
-                .set("name",teacher.getName())
-                .set("sex",teacher.getSex())
-                .set("subject",teacher.getSubject())
-                .set("scaddress",teacher.getScaddress())
-                .set("specialty",teacher.getSpecialty())
-                .eq("id",teacher.getId());
-        boolean success = this.teacherService.update(teacherUpdateWrapper);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"修改成功",true);
+    public Output update(@RequestBody Teacher teacher) {
+        boolean success = this.teacherService.updateById(teacher);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "修改成功", true);
         }
 
-        return new Output(Output.STATUS_FAIL,"修改失败",false);
+        return new Output(Output.STATUS_FAIL, "修改失败", false);
     }
 
     @RequestMapping("/add")
-    public Output add(@RequestBody Teacher teacher){
+    public Output add(@RequestBody Teacher teacher) {
         boolean success = this.teacherService.save(teacher);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"修改成功",true);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "修改成功", true);
         }
 
-        return new Output(Output.STATUS_FAIL,"修改失败",false);
+        return new Output(Output.STATUS_FAIL, "修改失败", false);
     }
 
 }

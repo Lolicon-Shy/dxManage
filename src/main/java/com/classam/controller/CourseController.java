@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 宋欢
@@ -27,61 +27,51 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping("/list")
-    public Output list(){
+    public Output list() {
         List<Course> list = this.courseService.list();
-        if (list.size()>1){
-            return new Output(Output.STATUS_SUCCESS,"查询成功",list);
+        if (list.size() > 1) {
+            return new Output(Output.STATUS_SUCCESS, "查询成功", list);
         }
-        return new Output(Output.STATUS_FAIL,"没有数据",null);
+        return new Output(Output.STATUS_FAIL, "没有数据", null);
     }
 
     @RequestMapping("/deleteById/{id}")
-    public Output deleteById(@PathVariable("id") Integer id){
+    public Output deleteById(@PathVariable("id") Integer id) {
         boolean success = this.courseService.removeById(id);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"删除成功",true);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "删除成功", true);
         }
-        return new Output(Output.STATUS_FAIL,"删除失败",false);
+        return new Output(Output.STATUS_FAIL, "删除失败", false);
     }
 
     @RequestMapping("/updateOrAdd")
-    public Output updateOrAdd(@RequestBody Course course){
+    public Output updateOrAdd(@RequestBody Course course) {
         boolean success = this.courseService.saveOrUpdate(course);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"修改或删除成功",true);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "修改或删除成功", true);
         }
 
-        return new Output(Output.STATUS_FAIL,"修改或删除失败",false);
+        return new Output(Output.STATUS_FAIL, "修改或删除失败", false);
     }
 
     @RequestMapping("/update")
-    public Output update(@RequestBody Course course){
-        UpdateWrapper<Course> courseUpdateWrapper = new UpdateWrapper<>();
-        courseUpdateWrapper
-                .set("checksc",course.getChecksc())
-                .set("type",course.getType())
-                .set("specialty",course.getSpecialty())
-                .set("poclass",course.getPoclass())
-                .set("classinf",course.getClassinf())
-                .eq("id",course);
-        boolean success = this.courseService.update(courseUpdateWrapper);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"修改成功",true);
+    public Output update(@RequestBody Course course) {
+        boolean success = this.courseService.updateById(course);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "修改成功", true);
         }
 
-        return new Output(Output.STATUS_FAIL,"修改失败",false);
+        return new Output(Output.STATUS_FAIL, "修改失败", false);
     }
 
     @RequestMapping("/add")
-    public Output add(@RequestBody Course course){
+    public Output add(@RequestBody Course course) {
         boolean success = this.courseService.save(course);
-        if (success){
-            return new Output(Output.STATUS_SUCCESS,"修改成功",true);
+        if (success) {
+            return new Output(Output.STATUS_SUCCESS, "修改成功", true);
         }
-
-        return new Output(Output.STATUS_FAIL,"修改失败",false);
+        return new Output(Output.STATUS_FAIL, "修改失败", false);
     }
-
 
 
 }
