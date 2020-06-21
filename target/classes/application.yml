@@ -1,5 +1,4 @@
 spring:
-  port: 8000
   datasource:
     url: jdbc:mysql://123.57.177.22:3306/dx?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: root
