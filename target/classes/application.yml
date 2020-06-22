@@ -1,5 +1,7 @@
+
 server:
   port: 8000
+
 spring:
   datasource:
     url: jdbc:p6spy:mysql://123.57.177.22:3306/dx?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT&nullCatalogMeansCurrent=true
