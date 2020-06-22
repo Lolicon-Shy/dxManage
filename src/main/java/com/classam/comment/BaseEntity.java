@@ -13,6 +13,11 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 
+/**
+ *
+ *  @author 宋欢
+ *  @since 2020-06-22
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)

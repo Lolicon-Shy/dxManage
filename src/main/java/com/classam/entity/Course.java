@@ -30,19 +30,26 @@ public class Course extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
+    @ApiModelProperty(value = "课程唯一id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "课程类别")
     private String type;
 
+    @ApiModelProperty(value = "课程院部")
     private String checksc;
 
+    @ApiModelProperty(value = "课程专业")
     private String specialty;
 
+    @ApiModelProperty(value = "教师号")
     private Integer tid;
 
+    @ApiModelProperty(value = "上课地点")
     private String poclass;
 
+    @ApiModelProperty(value = "课程介绍")
     private String classinf;
 
 }

@@ -1,18 +1,18 @@
 package com.classam.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.classam.comment.Output;
-import com.classam.entity.Course;
-import com.classam.entity.Student;
+
 import com.classam.entity.Teacher;
 import com.classam.service.TeacherService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
@@ -25,7 +25,8 @@ import java.util.List;
  * @since 2020-06-21
  */
 @RestController
-@RequestMapping("/teacher")
+@RequestMapping("/api/teacher")
+@EnableSwagger2
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;

@@ -6,10 +6,12 @@ import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
 import com.classam.comment.Output;
 import com.classam.entity.Course;
 import com.classam.service.CourseService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
@@ -22,7 +24,8 @@ import java.util.List;
  * @since 2020-06-21
  */
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/api/course")
+@EnableSwagger2
 public class CourseController {
 
     @Autowired

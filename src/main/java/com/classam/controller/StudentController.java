@@ -1,13 +1,16 @@
 package com.classam.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.alibaba.fastjson.JSON;
 import com.classam.comment.Output;
-import com.classam.entity.Course;
 import com.classam.entity.Student;
 import com.classam.service.StudentService;
+import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
@@ -20,8 +23,11 @@ import java.util.List;
  * @since 2020-06-21
  */
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student")
+@EnableSwagger2
 public class StudentController {
+
+    private static Logger logger = LoggerFactory.getLogger("StudentController");
 
     @Autowired
     private StudentService studentService;
@@ -37,6 +43,7 @@ public class StudentController {
 
     @RequestMapping("/deleteById/{id}")
     public Output deleteById(@PathVariable("id") Integer id) {
+        logger.info("addStudent,id:" + JSON.toJSONString(id));
         boolean success = this.studentService.removeById(id);
         if (success) {
             return new Output(Output.STATUS_SUCCESS, "删除成功", true);
@@ -56,6 +63,7 @@ public class StudentController {
 
     @RequestMapping("/update")
     public Output update(@RequestBody Student student) {
+        logger.info("updateStudent,student:" + JSON.toJSONString(student));
         boolean success = this.studentService.updateById(student);
         if (success) {
             return new Output(Output.STATUS_SUCCESS, "修改成功", true);
@@ -65,6 +73,7 @@ public class StudentController {
 
     @RequestMapping("/add")
     public Output add(@RequestBody Student student) {
+        logger.info("addStudent,student:" + JSON.toJSONString(student));
         Output output = this.studentService.check(student);
         if (output != null) {
             return output;
