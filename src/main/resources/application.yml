@@ -11,9 +11,9 @@ spring:
     cache: false
 
 
+
 mybatis-plus:
   configuration:
-    # ‰≥ˆ»’÷æ
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
