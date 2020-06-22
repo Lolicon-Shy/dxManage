@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -31,11 +32,12 @@ public class SwaggerConfig {
                 .enable(flag)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.classam.controller"))
+                .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo(){
-        Contact contact = new Contact("宋欢他弟","http://123.57.177.22:8000/","1198248640@qq.com");
+        Contact contact = new Contact("宋欢","http://123.57.177.22:8000/","2815744504@qq.com");
         return new ApiInfo(
                 "课程管理",
                 "宋欢的第一个微服务项目",
