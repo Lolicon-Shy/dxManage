@@ -6,6 +6,7 @@ import com.classam.comment.Output;
 import com.classam.entity.Teacher;
 import com.classam.service.TeacherService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +25,9 @@ import java.util.List;
  * @author 宋欢
  * @since 2020-06-21
  */
+@ApiModel("教师控制类")
 @RestController
 @RequestMapping("/api/teacher")
-@EnableSwagger2
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;

@@ -6,6 +6,7 @@ import com.classam.comment.Output;
 import com.classam.entity.Student;
 import com.classam.service.StudentService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ import java.util.List;
  * @author 宋欢
  * @since 2020-06-21
  */
+@ApiModel("学生控制层")
 @RestController
 @RequestMapping("/api/student")
-@EnableSwagger2
 public class StudentController {
 
     private static Logger logger = LoggerFactory.getLogger("StudentController");

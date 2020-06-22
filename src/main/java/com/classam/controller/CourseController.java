@@ -7,6 +7,9 @@ import com.classam.comment.Output;
 import com.classam.entity.Course;
 import com.classam.service.CourseService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +26,9 @@ import java.util.List;
  * @author 宋欢
  * @since 2020-06-21
  */
+@ApiModel("课程控制层")
 @RestController
 @RequestMapping("/api/course")
-@EnableSwagger2
 public class CourseController {
 
     @Autowired
