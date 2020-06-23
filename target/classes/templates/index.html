@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我是首页，写前端的快来美化我</title>
+    <script src="{pageContext.request.contextPath}/static/js/jquery-3.5.1.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    function f() {
+        $.ajax({
+            type:"post",
+            url:"${pageContext.request.contextPath }/student/list",
+
+        });
+    }
+</script>
+
+<h1>我是首页，写前端的快来美化我!!!</h1>
+
+</body>
+</html>

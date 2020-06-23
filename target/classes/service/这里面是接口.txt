@@ -1,0 +1,2 @@
+/student/list   查询全部学生
+/student/add  添加学生
