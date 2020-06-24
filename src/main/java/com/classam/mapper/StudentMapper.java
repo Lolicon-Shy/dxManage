@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author 宋欢
- * @since 2020-06-21
+ * @since 2020-06-24
  */
 @Mapper
 public interface StudentMapper extends BaseMapper<Student> {

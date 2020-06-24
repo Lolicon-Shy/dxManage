@@ -1,8 +1,8 @@
 package com.classam.service.impl;
 
-import com.classam.entity.Student;
-import com.classam.mapper.StudentMapper;
-import com.classam.service.IStudentService;
+import com.classam.entity.Admin;
+import com.classam.mapper.AdminMapper;
+import com.classam.service.IAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-06-24
  */
 @Service
-public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements IStudentService {
+public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements IAdminService {
 
 }

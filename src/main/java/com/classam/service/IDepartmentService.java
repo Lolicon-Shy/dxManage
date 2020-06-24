@@ -1,6 +1,6 @@
 package com.classam.service;
 
-import com.classam.entity.Course;
+import com.classam.entity.Department;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author 宋欢
- * @since 2020-06-21
+ * @since 2020-06-24
  */
-public interface CourseService extends IService<Course> {
+public interface IDepartmentService extends IService<Department> {
 
 }

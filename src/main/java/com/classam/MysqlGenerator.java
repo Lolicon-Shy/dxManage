@@ -1,5 +1,6 @@
 package com.classam;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -7,6 +8,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -23,24 +25,24 @@ import java.util.Scanner;
  */
 public class MysqlGenerator {
 
-    /**
-     * <p>
-     * 读取控制台内容
-     * </p>
-     */
-    public static String scanner(String tip) {
-        Scanner scanner = new Scanner(System.in);
-        StringBuilder help = new StringBuilder();
-        help.append("请输入" + tip + "：");
-        System.out.println(help.toString());
-        if (scanner.hasNext()) {
-            String ipt = scanner.next();
-            if (StringUtils.isNotEmpty(ipt)) {
-                return ipt;
-            }
-        }
-        throw new MybatisPlusException("请输入正确的" + tip + "！");
-    }
+//    /**
+//     * <p>
+//     * 读取控制台内容
+//     * </p>
+//     */
+//    public static String scanner(String tip) {
+//        Scanner scanner = new Scanner(System.in);
+//        StringBuilder help = new StringBuilder();
+//        help.append("请输入" + tip + "：");
+//        System.out.println(help.toString());
+//        if (scanner.hasNext()) {
+//            String ipt = scanner.next();
+//            if (StringUtils.isNotEmpty(ipt)) {
+//                return ipt;
+//            }
+//        }
+//        throw new MybatisPlusException("请输入正确的" + tip + "！");
+//    }
 
     /**
      * RUN THIS
@@ -55,6 +57,8 @@ public class MysqlGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("宋欢");
         gc.setOpen(false);
+        gc.setDateType(DateType.ONLY_DATE);
+        gc.setSwagger2(true);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -64,6 +68,7 @@ public class MysqlGenerator {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
+        dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -71,27 +76,13 @@ public class MysqlGenerator {
         // 设置模块名称
         // pc.setModuleName(scanner("模块名"));
         pc.setParent("com.classam");
+        pc.setEntity("entity");
+        pc.setMapper("mapper");
+        pc.setService("service");
+        pc.setController("controller");
         mpg.setPackageInfo(pc);
 
-        // 自定义配置
-        InjectionConfig cfg = new InjectionConfig() {
-            @Override
-            public void initMap() {
-                // to do nothing
-            }
-        };
-        List<FileOutConfig> focList = new ArrayList<>();
-        focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输入文件名称
 
-                return projectPath + "/src/main/java/com/classam/mapper/xml/" +
-                        tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
-            }
-        });
-        cfg.setFileOutConfigList(focList);
-        mpg.setCfg(cfg);
         mpg.setTemplate(new TemplateConfig().setXml(null));
 
         // 策略配置
@@ -101,7 +92,8 @@ public class MysqlGenerator {
         // 设置实体类的父类
         strategy.setSuperEntityClass("com.classam.comment.BaseEntity");
         strategy.setEntityLombokModel(true);
-        strategy.setInclude(scanner("表名"));
+//        strategy.setInclude(scanner("表名"));
+        strategy.setInclude("admin","checkclass","course","teacher","department","specialty","student");
         //  strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
