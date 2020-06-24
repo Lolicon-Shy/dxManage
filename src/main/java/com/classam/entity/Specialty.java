@@ -37,7 +37,7 @@ public class Specialty extends BaseEntity {
     private String contact;
 
     @ApiModelProperty(value = "专业介绍")
-    private String specialty;
+    private String specialtyInfo;
 
 
 }

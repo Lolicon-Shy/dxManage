@@ -30,12 +30,12 @@ public class Course extends BaseEntity {
     private Integer cid;
 
     @ApiModelProperty(value = "学时")
-    private String period;
+    private Integer period;
 
     @ApiModelProperty(value = "学分")
     private String credit;
 
-    @ApiModelProperty(value = "课程介绍")
+    @ApiModelProperty(value = "专业号")
     private Integer specialtyId;
 
     @ApiModelProperty(value = "课程信息")

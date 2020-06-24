@@ -1,10 +1,13 @@
 package com.classam.service.impl;
 
+import com.classam.comment.Output;
 import com.classam.entity.Checkclass;
 import com.classam.mapper.CheckclassMapper;
 import com.classam.service.ICheckclassService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 /**
  * <p>
@@ -17,4 +20,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class CheckclassServiceImpl extends ServiceImpl<CheckclassMapper, Checkclass> implements ICheckclassService {
 
+    @Override
+    public Output check(Checkclass checkclass) {
+        if (Objects.isNull(checkclass.getCid())){
+            return new Output(Output.STATUS_FAIL,"缺少对应的Cid参数",null);
+        }
+
+        if (Objects.isNull(checkclass.getSid())){
+            return new Output(Output.STATUS_FAIL,"缺少对应的Sid参数",null);
+        }
+
+        if (Objects.isNull(checkclass.getTid())){
+            return new Output(Output.STATUS_FAIL,"缺少对应的Tid参数",null);
+        }
+      
+        return null;
+    }
 }
