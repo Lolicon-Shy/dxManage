@@ -72,7 +72,7 @@ public class DepartmentController {
         int pageInd = pageIndex == null ? 1 : pageIndex;
         int pageSi = pageSize == null ? 10 : pageSize;
 
-        Page<Department> departmentPage = new Page<>();
+        Page<Department> departmentPage = new Page<>(pageInd,pageSi);
         QueryWrapper<Department> departmentQueryWrapper = new QueryWrapper<>();
         departmentQueryWrapper
                 .orderByDesc("create_time");

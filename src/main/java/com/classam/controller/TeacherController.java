@@ -71,7 +71,7 @@ public class TeacherController {
         int pageInd = pageIndex == null ? 1 : pageIndex;
         int pageSi = pageSize == null ? 10 : pageSize;
 
-        Page<Teacher> teacherPage = new Page<>();
+        Page<Teacher> teacherPage = new Page<>(pageInd,pageSi);
         QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
         teacherQueryWrapper
                 .orderByDesc("create_time");

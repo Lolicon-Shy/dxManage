@@ -71,7 +71,7 @@ public class StudentController {
         int pageInd = pageIndex == null ? 1 : pageIndex;
         int pageSi = pageSize == null ? 10 : pageSize;
 
-        Page<Student> studentPage = new Page<>();
+        Page<Student> studentPage = new Page<>(pageInd,pageSi);
         QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
         studentQueryWrapper
                 .orderByDesc("create_time");

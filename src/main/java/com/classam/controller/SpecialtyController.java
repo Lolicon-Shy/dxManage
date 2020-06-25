@@ -71,7 +71,7 @@ public class SpecialtyController {
         int pageInd = pageIndex == null ? 1 : pageIndex;
         int pageSi = pageSize == null ? 10 : pageSize;
 
-        Page<Specialty> specialtyPage = new Page<>();
+        Page<Specialty> specialtyPage = new Page<>(pageInd,pageSi);
         QueryWrapper<Specialty> specialtyQueryWrapper = new QueryWrapper<>();
         specialtyQueryWrapper
                 .orderByDesc("create_time");

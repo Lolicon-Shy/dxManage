@@ -72,7 +72,7 @@ public class CheckclassController {
         int pageInd = pageIndex == null ? 1 : pageIndex;
         int pageSi = pageSize == null ? 10 : pageSize;
 
-        Page<Checkclass> checkclassPage = new Page<>();
+        Page<Checkclass> checkclassPage = new Page<>(pageInd,pageSi);
         QueryWrapper<Checkclass> checkclassQueryWrapper = new QueryWrapper<>();
         checkclassQueryWrapper
                 .orderByDesc("create_time");

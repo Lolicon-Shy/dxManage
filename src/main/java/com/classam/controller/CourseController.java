@@ -75,7 +75,7 @@ public class CourseController {
         int pageInd = pageIndex == null ? 1 : pageIndex;
         int pageSi = pageSize == null ? 10 : pageSize;
 
-        Page<Course> coursePage = new Page<>();
+        Page<Course> coursePage = new Page<>(pageInd,pageSi);
         QueryWrapper<Course> courseQueryWrapper = new QueryWrapper<>();
         courseQueryWrapper
                 .orderByDesc("create_time");
