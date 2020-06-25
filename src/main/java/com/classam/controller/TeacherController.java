@@ -4,14 +4,11 @@ package com.classam.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.classam.comment.Output;
-import com.classam.entity.Student;
 import com.classam.entity.Teacher;
-import com.classam.service.IStudentService;
 import com.classam.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +21,7 @@ import java.util.Objects;
  * @author 宋欢
  * @since 2020-06-24
  */
-@Controller
+@RestController
 @RequestMapping("/api/teacher")
 public class TeacherController {
     @Autowired

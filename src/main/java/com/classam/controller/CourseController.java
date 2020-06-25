@@ -4,15 +4,15 @@ package com.classam.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.classam.comment.Output;
-import com.classam.entity.Checkclass;
 import com.classam.entity.Course;
 import com.classam.service.ICourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,7 +23,7 @@ import java.util.Objects;
  * @author 宋欢
  * @since 2020-06-24
  */
-@Controller
+@RestController
 @RequestMapping("/api/course")
 public class CourseController {
 
@@ -90,6 +90,18 @@ public class CourseController {
             return new Output(Output.STATUS_SUCCESS,"查询成功",list);
         }
         return new Output(Output.STATUS_FAIL,"没有数据",null);
+    }
+
+    @PostMapping("/selectByName/{name}")
+    public Output selectByName(@PathVariable("name") String name){
+        Map<String, Object> stringObjectHashMap = new HashMap<>();
+        stringObjectHashMap.put("name",name);
+        List<Course> courses = this.iCourseService.listByMap(stringObjectHashMap);
+        if (courses.size()>0){
+            return new Output(Output.STATUS_SUCCESS,"查询成功",courses);
+        }
+
+        return new Output(Output.STATUS_FAIL,"没有这个课",null);
     }
 
 }

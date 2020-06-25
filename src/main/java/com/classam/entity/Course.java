@@ -26,6 +26,9 @@ public class Course extends BaseEntity {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "课程名称")
+    private String name;
+
     @ApiModelProperty(value = "课程号码")
     private Integer cid;
 

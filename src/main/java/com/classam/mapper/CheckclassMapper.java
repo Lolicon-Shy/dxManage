@@ -3,6 +3,10 @@ package com.classam.mapper;
 import com.classam.entity.Checkclass;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -14,5 +18,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CheckclassMapper extends BaseMapper<Checkclass> {
+
+
+
+
 
 }

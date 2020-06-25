@@ -3,7 +3,7 @@ package com.classam.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
  * @author 宋欢
  * @since 2020-06-24
  */
-@Controller
+@RestController
 @RequestMapping("/api/admin")
 public class AdminController {
 

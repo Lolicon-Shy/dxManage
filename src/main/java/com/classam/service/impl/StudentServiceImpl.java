@@ -8,6 +8,9 @@ import com.classam.service.IStudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -21,6 +24,8 @@ import java.util.Objects;
 @Service
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements IStudentService {
 
+    @Resource
+    private StudentMapper studentMapper;
 
     @Override
     public Output check(Student student) {
@@ -37,4 +42,26 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         }
         return null;
     }
+
+    @Override
+    public Output gradeInfo(Integer sid) {
+
+        List<Map<String, Object>> maps = this.studentMapper.gradeInfo(sid);
+        if (maps.size()>0){
+            return new Output(Output.STATUS_SUCCESS,"查询成功",maps);
+        }
+        return null;
+    }
+
+    @Override
+    public Output selectStuCheck(Integer sid) {
+        List<Map<String, Object>> maps = this.studentMapper.selectStuCheck(sid);
+        if (maps.size()>0){
+            return new Output(Output.STATUS_SUCCESS,"查询成功",maps);
+        }
+
+        return new Output(Output.STATUS_FAIL,"查询失败，没有数据",null);
+    }
+
+
 }

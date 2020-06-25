@@ -25,7 +25,7 @@ public class Checkclass extends BaseEntity {
     private Integer id;
 
     @ApiModelProperty(value = "学号")
-    private Integer sid;
+    private Integer sId;
 
     @ApiModelProperty(value = "课程号")
     private Integer cid;

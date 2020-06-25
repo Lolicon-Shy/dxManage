@@ -9,7 +9,6 @@ import com.classam.service.ICheckclassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * @author 宋欢
  * @since 2020-06-24
  */
-@Controller
+@RestController
 @RequestMapping("/api/checkclass")
 public class CheckclassController {
 

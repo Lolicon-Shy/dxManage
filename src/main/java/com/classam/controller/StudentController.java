@@ -4,14 +4,11 @@ package com.classam.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.classam.comment.Output;
-import com.classam.entity.Specialty;
 import com.classam.entity.Student;
-import com.classam.service.ISpecialtyService;
 import com.classam.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +21,7 @@ import java.util.Objects;
  * @author 宋欢
  * @since 2020-06-24
  */
-@Controller
+@RestController
 @RequestMapping("/api/student")
 public class StudentController {
     @Autowired
@@ -90,4 +87,41 @@ public class StudentController {
         }
         return new Output(Output.STATUS_FAIL, "没有数据", null);
     }
+
+    /**
+     * 按id查询学生成绩
+     * @param sid
+     * @return
+     */
+    @GetMapping("/gradeInfo/{sid}")
+    public Output getGradeInfoById(@PathVariable("sid") Integer sid){
+        if (Objects.isNull(sid)){
+            return new Output(Output.STATUS_FAIL,"确少学生id参数",null);
+        }
+        Output output = this.iStudentService.gradeInfo(sid);
+        if (output != null){
+            return output;
+        }
+
+        return new Output(Output.STATUS_FAIL,"查询失败，没有数据",null);
+    }
+
+    /**
+     * 查询学生选课信息
+     * @param sid
+     * @return
+     */
+    @GetMapping("/selectCheck/{sid}")
+    public Output selectCheck(@PathVariable("sid")Integer sid){
+        if (Objects.isNull(sid)){
+            return new Output(Output.STATUS_FAIL,"请传入学号",null);
+        }
+        Output output = this.iStudentService.selectStuCheck(sid);
+        if (output!=null){
+            return output;
+        }
+        return new Output(Output.STATUS_FAIL,"没有此学生",null);
+    }
+
+
 }

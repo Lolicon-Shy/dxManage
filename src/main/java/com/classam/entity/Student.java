@@ -27,6 +27,9 @@ public class Student extends BaseEntity {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "学号")
+    private Integer sId;
+
     @ApiModelProperty(value = "学生专业号")
     private String specialtyId;
 
